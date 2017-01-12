@@ -1,0 +1,19 @@
+{
+  "name": "poc-websocket-maps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.4.7", 
+    "cron": "^1.2.1",
+    "every-moment": "0.0.1", 
+    "mongojs": "^2.4.0", 
+    "socket.io": "^1.7.2" 
+  }
+}

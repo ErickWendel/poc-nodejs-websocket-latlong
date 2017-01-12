@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="bower_components/angular/angular.min.js"></script>
+    <!--<script src="bower_components/angular-websocket/dist/angular-websocket.js"></script>-->
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script>
+        angular.module('app', []).controller('SomeController', function ($scope) {
+            var vm = this;
+            vm.items = [];
+            var user = { name: 'Erick' };
+            socket = io.connect('localhost:3001/', { query: "user=" + JSON.stringify(user) });
+            socket.on('pessoa:' + user.name, function (data) {
+                $scope.$apply(function () { vm.items.push(data); });
+            });
+        });
+    </script>
+</head>
+
+<body ng-app="app" ng-controller="SomeController as vm">
+    <section>
+        <div ng-repeat="item in vm.items">
+            <div>latitude: {{item.latitude}} - longitude: {{item.longitude}}</div>
+        </div>
+    </section>
+
+</body>
+
+</html>
